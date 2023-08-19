@@ -1,0 +1,130 @@
+<div class="container">
+  <mat-card class="login-card">
+    <mat-card-header style="padding: 16px 50px 0px;">
+    <h2>Welcome Back!</h2>
+  </mat-card-header>
+  
+  <mat-card-content class="card-content">
+  <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+  
+    <div >
+      <label>Email: </label>
+      <input type="email" name="email" id="email" formControlName="email"  required style="margin-left: 9px">
+    </div>
+    
+    
+    <div >
+      <label>Password:</label>
+      <input type="password" name="password" id="password" formControlName="password"  required style="margin-left: 3%">
+    </div>
+    <br>
+    
+    
+  
+      <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid" class="loginbtn">Login</button>
+  
+  </form>
+  <p *ngIf="loginError" class="error-message">Invalid Email or Password</p>
+</mat-card-content>
+  </mat-card>
+  </div> 
+    
+   
+  
+  
+  
+  
+  
+  
+  
+  <!-- <mat-card-content class="card-content">
+  <div class="form">
+    <form (ngSubmit)="login()" #loginForm="ngForm" >
+      
+      <div>
+        <label>Email</label>
+        <input type="email" name="email" [(ngModel)]="email" required>
+      </div>
+
+      <div>
+        <label>Password</label>
+        <input type="password" name="password" [(ngModel)]="password" required>
+      </div>
+      <br>
+      <div *ngIf="isError" class="error-message">
+        Invalid email or password.
+      </div>
+
+      <button mat-raised-button color="primary" type="submit">Login</button>
+     
+    </form>
+    </div>
+</mat-card-content>  -->
+<!-- </mat-card>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+<!--<form id="login-form">
+    <mat-card-content class="card-content">
+    <div class="input">
+        <label>Email:</label>
+        <br>
+        <input type="text" placeholder="Enter Email" name="email">
+    </div>
+     
+    <br>
+    <div class="input">
+        <label>Password:</label>
+        <br>
+        <input type="password" placeholder="Enter Password" name="password">
+    </div>
+
+    <br>
+    <div class="input">
+        <button type="submit" class="registerbtn">Login</button>
+    </div> 
+</form>
+
+<div id="Invalid Email or Password"></div>-->
+
+
+
+ <!-- <div class="container">
+<mat-card class="login-card">
+  <mat-card-header style="padding: 16px 50px 0px;">
+  <h2>Welcome Back!</h2>
+</mat-card-header>
+
+<mat-card-content class="card-content">
+<form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+
+  <div class="mar-top">
+    <label>Email: </label>
+    <input type="email" name="email" id="email" formControlName="email" [(ngModel)]="email" required >
+    </div>
+  
+  
+  <div>
+    <label>Password:</label>
+    <input type="password" name="password" id="password" formControlName="password" [(ngModel)]="password" required style="margin-left: 3%">
+    </div>
+  <br>
+  
+  <!-- <div *ngIf="isError" class="error-message">
+    Invalid email or password.
+  </div> -->
+
+    <!-- <button mat-raised-button color="primary" type="submit" class="loginbtn">Login</button>
+
+</form>
+</mat-card-content>
+</mat-card>
+</div>  --> 

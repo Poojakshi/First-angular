@@ -1,0 +1,502 @@
+<div class="container" mat-elevation-z8>
+<mat-card class="register-card" layout="row" layout-align="center center">
+ 
+  <mat-card-content class="card-content">
+<form [formGroup]="registerForm" >
+
+  <p style="text-align: center;"><strong><h2>Please fill the details to register !!</h2></strong></p>
+    <label>Name: </label>
+    <input type="text" placeholder="Enter name" name="name" id="name" required pattern="[a-zA-Z]+" formControlName="name" style="margin-left: 7%;">
+    <div *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched && registerForm.get('name')?.value">
+      <small class="error">Name should be alphabetic.</small>
+    </div>
+ 
+  <div class="mar-top">
+    <label>Email: </label>
+    <input type="email" placeholder="Enter email" name="email" id="email" formControlName="email">
+    <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched && registerForm.get('email')?.value">
+      <small class="error">Enter valid email address.</small>
+    </div>
+  </div>
+  
+  <div class="mar-top ">
+    <label>Contact: </label>
+    <input type="number" placeholder="Enter contact" name="contact" id="contact" formControlName="contact" class="contact" style="margin-left: 5%">
+    <div *ngIf="registerForm.get('contact')?.invalid && registerForm.get('contact')?.touched && registerForm.get('contact')?.value.length !== 10">
+      <small class="error">Contact must be 10 digits long.</small>
+    </div>
+  </div>
+
+  <div>
+    <label id="gender">Gender: </label>
+    <mat-radio-group formControlName="gender" style="margin-left: 19px;">
+      <mat-radio-button value="male">Male</mat-radio-button>
+      <mat-radio-button value="female">Female</mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <div>
+    <label id="selectedrole">Select your Role: </label>
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label style="vertical-align: 30px;">Select your Role</mat-label>
+      <mat-select formControlName="role">
+        <mat-option *ngFor="let role of roles" [value]="role">{{ role }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <label>Password:</label>
+    <input type="password" placeholder="Please enter 6 characters" name="password" id="password" formControlName="password" style="margin-left: 3%">
+    <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched && registerForm.get('password')?.value">
+      <small class="error">Password is required and must be 6 characters long</small>
+    </div>
+  </div>
+
+
+  <div>
+    <button *ngIf="!isUpdateActive" (click)="submit()"mat-raised-button color="primary" type="submit" class="registerbtn">Register</button>
+    <button *ngIf="isUpdateActive" (click)="update()" mat-raised-button color="primary" type="update" class="registerbtn">Update</button>
+    
+  </div>
+
+  <br>
+  <div class="container-login">
+    <p>Already have an account? <a href="#" routerLink="/login"><strong>Login</strong></a></p>
+  </div>
+
+</form>
+</mat-card-content>
+</mat-card>
+</div>
+
+
+
+
+
+
+
+
+<!--<div>
+    <label id="selectedrole">Select your Role</label>
+    <br>
+    <mat-form-field>
+  <mat-label> Role</mat-label>
+  <mat-select formControlName="role">
+    <mat-option *ngFor="let rolr of roles" [value]="role.value">
+      {{role.viewValue}}
+    </mat-option>
+  </mat-select>>
+</mat-form-field>
+</div>-->
+
+
+
+
+
+<!--<div>
+    <label id="selectedrole">Select your Role</label>
+    <br>
+    <mat-form-field>
+  <mat-label> Role</mat-label>
+  <mat-select formControlName="role">
+    <mat-option *ngFor="let rolr of roles" [value]="role.value">
+      {{role.viewValue}}
+    </mat-option>
+  </mat-select>>
+</mat-form-field>
+</div>-->
+
+
+
+
+<!--<div>
+    <label id="selectedrole">Select your Role</label>
+    <br>
+    <mat-radio-group aria-label="selectRole" formControlName="role">
+      <mat-radio-button *ngFor="let role of roles" [value]="role">
+        {{ role }}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>-->
+
+
+
+<!--<form (ngSubmit)="registerUser()" #registrationForm="ngForm">
+  <div>
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required pattern="[a-zA-Z]+" [(ngModel)]="user.username">
+    <div *ngIf="user.touched && user.invalid" class="error-message">
+      <div *ngIf="user.errors.required">Username is required</div>
+      <div *ngIf="user.errors.pattern">Username can only contain alphabetic characters.</div>
+    </div>
+  </div>
+
+
+  <div>
+    <label for="contact">Contact:</label>
+    <input type="text" id="contact" name="contact" required pattern="[0-9]{10}" [(ngModel)]="user.contact">
+    <div *ngIf="contact.touched && contact.invalid" class="error-message">
+      <div *ngIf="contact.errors.required">Contact is required</div>
+      <div *ngIf="contact.errors.pattern">Contact should contain only digits.</div>
+    </div>
+  </div>
+
+
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required [(ngModel)]="user.email">
+    <div *ngIf="email.touched && email.invalid" class="error-message">
+      <div *ngIf="email.errors.required">Email is required.</div>
+      <div *ngIf="email.errors.pattern">Invalid email format.</div>
+    </div>
+  </div>
+
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required minlength="6" [(ngModel)]="user.email">
+    <div *ngIf="password.touched && password.invalid" class="error-message">
+      <div *ngIf="password.errors.required">Email is required.</div>
+      <div *ngIf="password.errors.minlength">Password must be atleast 6 characters long.</div>
+    </div>
+  </div>
+
+
+  <div>
+    <label for="gender">Gender</label>
+    <div>
+      <label>
+        <input type="radio" name="gender" value="male" [(ngModel)]="user.gender">Male
+      </label>
+      <label>
+        <input type="radio" name="gender" value="female" [(ngModel)]="user.gender">Female
+      </label>
+    </div>
+  </div>
+
+
+  <div>
+    <label for="role">Role:</label>
+    <select id="role" name="role" required [(ngModel)]="user.role">
+      <option value="" disabled selected>Select a role</option>
+      <option value="employee">Employee</option>
+      <option value="creator">Creator</option>       
+      <option value="visitor">Visitor</option>
+    </select>
+    <div *ngIf="role.touched && role.invalid" class="error-message">
+      <div *ngIf="role.errors.required">Role is required.</div>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="registrationForm.invalid">Register</button>
+</form>-->
+
+
+
+
+
+
+
+
+
+
+
+<!--<body>
+<div class="main">
+  <div class="register">
+<form (ngSubmit)="onSubmit()">
+
+    <p>Please fill the details to register</p>
+
+    <div>
+      <label>Name</label>
+      <br>
+      <input type="text" placeholder="Enter name"  name="Name" id="Name" formControlName="name" >
+    </div>
+  
+    <br>
+    <div>
+      <label>Email</label>
+      <br>
+      <input type="email" placeholder="Enter email" name="email" id="email" formControlName="email" >
+    </div>
+
+    <br>
+    <div>
+        <label>Contact</label>
+        <br>
+        <input type="int" placeholder="Enter contact" name="contactDetails" id="contactDetails" required minlength="10" formControlName="">
+      </div>
+
+      <br>
+      <div>
+      <label id="gender">Gender</label>
+      <br>
+      <mat-radio-group>
+        <mat-radio-button value="1">Male</mat-radio-button>
+        <mat-radio-button value="2">Female</mat-radio-button>
+      </mat-radio-group>
+      </div>
+
+      <br>
+      <div>
+        <label id="selectedrole">Select your Role</label>
+        <br>
+        <mat-radio-group aria-label="selectRole">
+          <mat-radio-button *ngFor="let role of roles" [value]="role">
+            {{ role }}
+          </mat-radio-button>
+        </mat-radio-group>
+       </div>
+
+     <br>
+    <div>
+      <label>Password:</label>
+      <br>
+      <input type="password" placeholder="Enter password"  name="password" id="password" required minlength="6" formControlName="">
+    </div>
+
+    <br>
+    <div>
+      <button type="submit" class="registerbtn">Register</button>
+    </div>
+
+    <br>
+    <div class="container login">
+        <p>Already have an account? <a href="#">Login</a></p>
+    </div>
+
+  </form>
+  </div>
+  </div>
+
+  </body>-->
+
+  <!--<body>
+<div class="main">
+  <div class="register">
+<form (ngSubmit)="onSubmit()">
+
+    <p>Please fill the details to register</p>
+
+    <div>
+      <label>Name</label>
+      <br>
+      <input type="text" placeholder="Enter name"  name="Name" id="Name" formControlName="name" >
+    </div>
+  
+    <br>
+    <div>
+      <label>Email</label>
+      <br>
+      <input type="email" placeholder="Enter email" name="email" id="email" formControlName="email" >
+    </div>
+
+    <br>
+    <div>
+        <label>Contact</label>
+        <br>
+        <input type="int" placeholder="Enter contact" name="contactDetails" id="contactDetails" required minlength="10" formControlName="">
+      </div>
+
+      <br>
+      <div>
+      <label id="gender">Gender</label>
+      <br>
+      <mat-radio-group>
+        <mat-radio-button value="1">Male</mat-radio-button>
+        <mat-radio-button value="2">Female</mat-radio-button>
+      </mat-radio-group>
+      </div>
+
+      <br>
+      <div>
+        <label id="selectedrole">Select your Role</label>
+        <br>
+        <mat-radio-group aria-label="selectRole">
+          <mat-radio-button *ngFor="let role of roles" [value]="role">
+            {{ role }}
+          </mat-radio-button>
+        </mat-radio-group>
+       </div>
+
+     <br>
+    <div>
+      <label>Password:</label>
+      <br>
+      <input type="password" placeholder="Enter password"  name="password" id="password" required minlength="6" formControlName="">
+    </div>
+
+    <br>
+    <div>
+      <button type="submit" class="registerbtn">Register</button>
+    </div>
+
+    <br>
+    <div class="container login">
+        <p>Already have an account? <a href="#">Login</a></p>
+    </div>
+
+  </form>
+  </div>
+  </div>
+
+
+  <div class="main">
+    <div class="register">
+  <form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+
+    <p>Please fill the details to register</p>
+
+    <div>
+      <label>Name</label>
+      <br>
+      <input type="text" placeholder="Enter name" name="name" id="name" required pattern="[a-zA-Z]+" formControlName="name">
+      <div *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched  && registerForm.get('name')?.value">
+        <small class="error">Name is required</small>
+      </div>
+    </div>
+
+    <br>
+    <div>
+      <label>Email</label>
+      <br>
+      <input type="email" placeholder="Enter email" name="email" id="email"  formControlName="email">
+      <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched  && registerForm.get('email')?.value">
+        <small class="error">Email is required and must be a valid email address</small>
+      </div>
+    </div>
+
+    <br>
+    <div>
+      <label>Contact</label>
+      <br>
+      <input type="text" placeholder="Enter contact" name="contact" id="contact" formControlName="contact">
+      <div *ngIf="registerForm.get('contact')?.invalid && registerForm.get('contact')?.touched && registerForm.get('contact')?.value">
+        <small class="error">Contact is required and must be at least 10 characters long</small>
+      </div>
+    </div>
+
+    
+    <br>
+    <div>
+      <label id="gender">Gender</label>
+      <br>
+      <mat-radio-group formControlName="gender">
+        <mat-radio-button value="1">Male</mat-radio-button>
+        <mat-radio-button value="2">Female</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <br>
+    <div>
+      <label id="selectedrole">Select your Role</label>
+      <br>
+      <mat-radio-group aria-label="selectRole" formControlName="role">
+        <mat-radio-button *ngFor="let role of roles" [value]="role">
+          {{ role }}
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <br>
+    <div>
+      <label>Password:</label>
+      <br>
+      <input type="password" placeholder="Enter password" name="password" id="password" formControlName="password">
+      <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched  && registerForm.get('contact')?.value">
+        <small class="error">Password is required and must be at least 6 characters long</small>
+      </div>
+    </div>
+
+    <br>
+    <div>
+      <button type="submit" class="registerbtn">Register</button>
+    </div>
+
+    <br>
+    <div class="container login">
+      <p>Already have an account? <a href="#">Login</a></p>
+    </div>
+
+  </form>
+</div>
+</div>
+ 
+ <!--<form (ngSubmit)="registerUser()" #registrationForm="ngForm">
+  <div>
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required pattern="[a-zA-Z]+" [(ngModel)]="user.username">
+    <div *ngIf="user.touched && user.invalid" class="error-message">
+      <div *ngIf="user.errors.required">Username is required</div>
+      <div *ngIf="user.errors.pattern">Username can only contain alphabetic characters.</div>
+    </div>
+  </div>
+
+
+  <div>
+    <label for="contact">Contact:</label>
+    <input type="text" id="contact" name="contact" required pattern="[0-9]{10}" [(ngModel)]="user.contact">
+    <div *ngIf="contact.touched && contact.invalid" class="error-message">
+      <div *ngIf="contact.errors.required">Contact is required</div>
+      <div *ngIf="contact.errors.pattern">Contact should contain only digits.</div>
+    </div>
+  </div>
+
+
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required [(ngModel)]="user.email">
+    <div *ngIf="email.touched && email.invalid" class="error-message">
+      <div *ngIf="email.errors.required">Email is required.</div>
+      <div *ngIf="email.errors.pattern">Invalid email format.</div>
+    </div>
+  </div>
+
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required minlength="6" [(ngModel)]="user.email">
+    <div *ngIf="password.touched && password.invalid" class="error-message">
+      <div *ngIf="password.errors.required">Email is required.</div>
+      <div *ngIf="password.errors.minlength">Password must be atleast 6 characters long.</div>
+    </div>
+  </div>
+
+
+  <div>
+    <label for="gender">Gender</label>
+    <div>
+      <label>
+        <input type="radio" name="gender" value="male" [(ngModel)]="user.gender">Male
+      </label>
+      <label>
+        <input type="radio" name="gender" value="female" [(ngModel)]="user.gender">Female
+      </label>
+    </div>
+  </div>
+
+
+  <div>
+    <label for="role">Role:</label>
+    <select id="role" name="role" required [(ngModel)]="user.role">
+      <option value="" disabled selected>Select a role</option>
+      <option value="employee">Employee</option>
+      <option value="creator">Creator</option>       
+      <option value="visitor">Visitor</option>
+    </select>
+    <div *ngIf="role.touched && role.invalid" class="error-message">
+      <div *ngIf="role.errors.required">Role is required.</div>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="registrationForm.invalid">Register</button>
+</form>-->
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

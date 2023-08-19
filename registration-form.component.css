@@ -1,0 +1,107 @@
+.error{
+  color:red;
+  margin-top:5px;
+  font-size: 12px;
+}
+input{
+  width: 65%;
+  padding-left: 10px; margin-left: 8%;
+}
+.mar-top{
+  margin-top:10px ;
+}
+button:disabled{
+  opacity:0.5;
+  cursor:not-allowed;
+}
+
+.register-card {
+  width: 40%;
+  margin: 15px 0px 53px 64px;
+  background-color: rgba(241, 188, 227, 0.623) ;
+  border-radius: 17px;
+}
+
+.container{
+  background-image:url("\src\assets\images\kelly-sikkema-Rq1MLxP5RgI-unsplash.jpg");
+  background-size: 100% 100%; 
+  background-repeat: no-repeat;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  height:93vh;
+}
+.card-content{
+  padding-left: 5% ;
+  
+}
+.container-login{
+  margin-top: 50px;
+  text-align: center;
+}
+
+.form-field{
+  width: 42%;
+  max-height: 47px;
+  vertical-align: -6px;
+}
+:host.mat-mdc-form-field-type-mat-select.mat-form-field-appearance-fill .mat-mdc-floating-label {
+  max-width: calc(100% - 18px);
+  margin-top: -16px !important;
+}
+
+.registerbtn{
+  margin-top: 20px;
+  float: right;
+  margin-right: 162px;
+}
+
+.cont{
+  margin-left: 4.8%;
+  width: 65%;
+}
+
+
+
+
+
+
+
+
+
+/*.mat-mdc-radio-button ~ .mat-mdc-radio-button {
+    margin-left: 16px;
+  }
+
+  body{
+    background-image: url('src/assets/images/wallpaperflare.com_wallpaper.jpg');
+    background-size: 100%;
+    
+  }
+
+  div.main{
+    
+    width:400px;
+    
+    margin:100px auto 0px auto;
+  }
+  
+
+  div.register{
+    background-color:rgb(38, 141, 124);
+    width:100%;
+    font-size:18px;
+    border-radius:10px;
+    border:1px soid rgba(255, 255, 255, 0.3);
+    box-shadow:2px 2px 15px rgba(0, 0, 0, 0.3);
+    color:black;
+    margin:50px;
+  }
+
+
+  label{
+    font-family:sans-serif;
+    font-size: 18px;
+    font-style: italic;
+  }*/
+  

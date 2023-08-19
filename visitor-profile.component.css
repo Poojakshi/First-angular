@@ -1,0 +1,29 @@
+.profile-card{
+    /* width:300px;
+     x;margin:200p 
+    position:absolute;*/
+    border: 1px solid #ccc;
+    width:300px;
+    margin-bottom: 50px;
+    display: flex;
+    margin:auto; 
+    margin-top: 20%;
+    border-radius: 9px;
+    /* background-color: rgba(5, 119, 81, 0.329); */
+} 
+.editbtn{
+    margin-left: 64%;
+    /* background-color: rgba(233, 171, 90, 0.562); */
+    font-size:106%;
+}
+
+.savebtn{
+    /* background-color:rgba(233, 171, 90, 0.562); */
+    font-size:105%;
+}
+
+.title{
+    margin-left: 98px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}

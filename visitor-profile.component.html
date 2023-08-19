@@ -1,0 +1,104 @@
+<div class="container">
+    <mat-card class="profile-card">
+      <mat-card-title class="title">Visitor Profile</mat-card-title>
+      <mat-card-content>
+        <!-- <form (ngSubmit)="onSubmit()" [formGroup]="visitorForm"></form> -->
+          <!-- <div *ngIf="user && user.userType === 'visitor'"> -->
+          <div *ngIf="user"> 
+            <p><strong>Id :</strong> {{ user.id }}</p> 
+            <p><strong>Name :</strong> {{ user.name }}</p>
+            <p><strong>Email :</strong> {{ user.email }}</p>
+            <p><strong>Contact :</strong> {{ user.contact }}</p>
+            <p><strong>Gender :</strong> {{ user.gender }}</p>
+            <p><strong>Role :</strong> {{ user.role }}</p>
+            <p><strong>Password :</strong> {{ user.password }}</p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <select [(ngModel)]="user.gender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select> -->
+<!-- <div class="container">
+    <mat-card class="profile-card">
+        
+            <mat-card-title class="title">Visitor Profile</mat-card-title>
+        
+        <mat-card-content>
+    <form (ngSubmit)="onSubmit()" [formGroup]="visitorForm" ></form>
+             <div>
+                <p><strong>Name:</strong> {{user.name}}</p>
+                <p><strong>Email:</strong> {{user.email}}</p>
+                <p><strong>Contact:</strong> {{user.contact}}</p>
+                <p><strong>Gender:</strong> {{user.gender}}</p>
+                <p><strong>Role:</strong> {{user.role}}</p>
+                
+            </div> 
+             <div *ngIf="editing">> 
+                <label>Name:</label>
+                <input type="text" [(ngModel)]="user.name">
+                <br>
+                <label>Email:</label>
+                <input type="text" [(ngModel)]="user.email">
+                <br>
+                <label>Contact:</label>
+                <input type="text" [(ngModel)]="user.contact">
+                <br>
+                <label>Gender:</label>
+                <select [(ngModel)]="user.gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div> 
+            <button class="savebtn" >Save</button>
+            <button class="editbtn">Edit</button>
+        </mat-card-content>
+    </mat-card>
+    </div> -->

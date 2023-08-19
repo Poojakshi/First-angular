@@ -1,0 +1,28 @@
+input{
+    width: 56%;
+    padding-left: 10px; margin-left: 8%;
+    margin-bottom: 15px;
+  }
+
+  .employee-card{
+    width: 40%;
+   background-color:rgba(218, 214, 214, 0.644); 
+   border-radius: 17px;
+   margin-left: 2%;
+   margin-top: 144px;
+    height: 30%;
+ }
+ /* :rgba(216, 193, 159, 0.822) */
+ .container{
+     background-image: url("../../assets/images/notepad-3316995_640.jpg"); 
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height:93vh;
+    /* align-items: center;  */
+    justify-content: center;
+    display:flex;
+}
+
+.submitbtn{
+    background-color:rgba(247, 243, 238, 0.938);
+    }

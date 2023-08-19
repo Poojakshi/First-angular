@@ -1,0 +1,38 @@
+ .profile-box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 8%;
+  }
+  
+  .user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+  }
+  
+   .user-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+  }
+  .field-cell {
+    width: 30%; 
+  }
+
+  .data-cell {
+    width: 70%; 
+    word-break: break-all; 
+  }
+  
+  /* .savebtn{
+    width: 46px;
+  }
+
+  .editbtn{
+    width: 46px;
+    margin-left: 77%;  
+  }  */

@@ -1,0 +1,32 @@
+<div class="container">
+<mat-card class="employee-card">
+ <mat-card-content class="card-content">
+    <mat-card-header style="padding: 12px 112px 0;">
+        <h2>Employee Details</h2>
+    </mat-card-header>  
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+
+    
+    <div>
+        <label>Employee ID:</label>
+        <input type = "text" name = "employeeid" placeholder = "Enter your Employee ID" formControlName="employeeid" >
+    </div>
+    
+    <div>
+        <label>Name:</label>
+        <input type = "text" name = "name" placeholder = "Enter your name" formControlName="name" style="margin-left: 17%;">
+    </div>
+    
+    <div>
+        <label>Department:</label>
+        <input type = "text" name = "department" placeholder = "Enter your departmant" formControlName="department" style="margin-left: 9%;">
+    </div>
+
+    <div>
+        <button mat-raised-button type="submit" class="submitbtn">Submit</button>
+    </div>
+  
+</form>
+  </mat-card-content>
+  </mat-card>
+  </div>

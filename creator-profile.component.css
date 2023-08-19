@@ -1,0 +1,70 @@
+ /* .profile-card{
+    width:300px;
+    margin-bottom: 50px;
+    display: flex;
+    margin:auto; 
+    margin-top: 20%;
+    border-radius: 9px; 
+     background-color: rgba(5, 119, 81, 0.329);
+} 
+.editbtn{
+    margin-left: 64%;
+    background-color: rgba(233, 171, 90, 0.562);
+    font-size:113%;
+}
+
+.savebtn{
+    background-color:rgba(233, 171, 90, 0.562);
+    font-size:113%;
+}
+
+.title{
+    margin-left: 98px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}   */
+
+.profile-box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    margin: 0 auto;
+    margin-top: 5%;
+    /* background-color: rgba(195, 233, 235, 0.87); */
+  }
+  
+  .user-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .detail-box {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #8b8a8a;
+    border-radius: 5px;
+    /* background-color: #ece4e4; */
+  }
+  
+  .detail-label {
+    font-weight: bold;
+  }
+  
+  .detail-value {
+    margin-top: 5px;
+  }
+
+  /* .savebtn{
+    width: 46px;
+    background-color: #ece4e4; 
+  }
+
+  .editbtn{
+    width: 46px;
+    margin-left: 69%;
+    background-color: #ece4e4; 
+  } */
+
+
