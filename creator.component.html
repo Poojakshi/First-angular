@@ -1,0 +1,71 @@
+<div class="container">
+   <a routerLink="/cprofile"><mat-icon class="icon">account_circle</mat-icon></a>
+   <!-- <div class="pimg">
+      <img [src]="">
+   </div>
+   <button (click)="changeImg('new-image-url')">change Image</button> -->
+     <mat-card class="create-card">
+    <mat-card-content class="card-content">  
+   <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+    <mat-card-header style="padding: 20px 199px 0px;">
+        <h2>Create new Blog</h2>
+    </mat-card-header>
+       <div>
+           <label>Title:</label>
+           <input type = "text" name = "title" formControlName="title" required style="margin-left: 10%">
+        </div>
+
+        <div>
+           <label>Author:</label>
+           <input type = "text" name = "author" formControlName="author" required style="margin-left: 8%">
+        </div>
+
+        <div class="text">
+           <label style="text-align: center;">Description:</label>
+           <textarea name = "description" formControlName="description" required style="margin-left: 3%; margin-bottom:10px"></textarea>
+        </div>
+
+        <div class="text1">
+           <label>Content:</label>
+           <textarea name = "content" formControlName="content" required style="margin-left: 7%"></textarea>
+        </div>
+        <br>
+      
+        <!-- <div >
+         <label>Category:</label>
+         <input type = "text" name = "author" formControlName="author" required style="margin-left: 6%">
+      </div> -->
+        <!-- <div>
+           <label>Tags:</label>
+           <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Category</mat-label>
+           <mat-select name = "tags" formControlName="tags" required>
+           <mat-option *ngFor="let tag of predefinedTags" [value]="tag">{{ tag }}</mat-option>
+           </mat-select>
+        </mat-form-field>
+        </div><br> -->
+       
+       <div>
+           <button mat-raised-button type="submit"  class="submitbtn">Create Blog</button>
+
+           <button mat-raised-button   class="draftbtn">Draft</button>
+       </div>
+     
+   </form>
+     </mat-card-content>
+     </mat-card> 
+     </div>
+   
+
+
+
+
+
+
+
+     
+     <!-- <div>
+      <button mat-raised-button type="submit" [disabled]="createForm.invalid" class="submitbtn">Create Blog</button>
+
+      <button mat-raised-button   class="draftbtn">Draft</button>
+  </div> -->
