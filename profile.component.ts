@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { TestServiceService } from '../test-service.service';
 import { ActivatedRoute } from '@angular/router';
@@ -10,30 +10,54 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProfileComponent {
  
-  //displayword:string="hello";
-
-  user: any = {
-    id:'',
-    name: '',
-    email: '',
-    contact: '',
-    gender: '',
-    role: '',
-    password:''
-  };
   constructor( private formBuilder: FormBuilder,private _service: TestServiceService, private route: ActivatedRoute)
    {}
-  
+
+   employeeData:any;
+ 
   ngOnInit(){
-    this.getMethod();
+    
+    this.employeeData = this._service.getUserData();
   }
-  getMethod(){
-    this._service.getUser().subscribe((data) => {
-      // this.user = data;
-       this.user=data;
-       console.log(this.user);
-       
-       })
-  }
+  
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// user  = {//displayword:string="hello";
+
+  //  @Input() employeeData ={
+  //      name: '',
+  //      email: '',
+  //      contact: '',
+  //      gender: '',
+  //      role: '',
+  //      password:''
+  //  } ;
+  //     id:'',
+  //     name: '',
+  //     email: '',
+  //     contact: '',
+  //     gender: '',
+  //     role: '',
+  //     password:''
+  //   };

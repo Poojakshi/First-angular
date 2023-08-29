@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormControl } from '@angular/forms';
 import { TestServiceService } from '../test-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-visitor-profile',
@@ -12,37 +13,72 @@ export class VisitorProfileComponent {
   
   
   constructor(private formBuilder: FormBuilder,
-    private _service: TestServiceService) { }
+    private _service: TestServiceService, private router:Router) { }
      //User:any;
     //value:any;
 
-  visitorForm!: FormGroup;
-  email:string='';
-  password:string='';
+ // visitorForm!: FormGroup;
+  // email:string='';
+  // password:string='';
+  // profile:any;
  // editing:boolean=false;
   
-  user: any = {
-    id:'',
-    name: '',
-    email: '',
-    contact: '',
-    gender: '',
-    role: '',
-    password:''
-  };
-  ngOnInit() {
-    this.getMethod();
-   }
+  // @Input() visitorData={
+  //   name: '',
+  //    email: '',
+  //    contact: '',
+  //    gender: '',
+  //    role: '',
+  //    password:''
+  // };
   
-  getMethod(){
-    this._service.loginUser(this.email, this.password).subscribe((data) => {
-       this.user=data;
-       console.log(this.user);
-       
-       })
+ 
+    visitorData: any;
+  
+   
+  
+    ngOnInit() {
+      this.visitorData = this._service.getUserData();
+    }
   }
+  // user = {
+  //   id:'',
+  //   name: '',
+  //   email: '',
+  //   contact: '',
+  //   gender: '',
+  //   role: '',
+  //   password:''
+  // };
+ 
+    //this.getMethod();
+   // this.user=this._service.loginUser(this.email, this.password).subscribe((data) => {
+        // this.user=data;
+         // console.log(this.user);
+          //this.router.navigate(['/vprofile']);
+       // })
+   
   
-}
+ // getMethod(){
+    
+   //this.user=this._service.loginUser();
+    // this._service.loginUser(this.email, this.password).subscribe((data) => {
+    //   this.user=data;
+    //    console.log(this.user);
+       
+    //    })
+ 
+  
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { TestServiceService } from '../test-service.service';
 import { Router } from '@angular/router';
 import { NgConfirmService } from 'ng-confirm-box';
-import { NgToastModule } from 'ng-angular-popup';
+import { NgToastService } from 'ng-angular-popup';
 import { ActivatedRoute } from '@angular/router';
 
 
@@ -17,7 +17,7 @@ export class EmployeeProfileComponent implements OnInit{
   public userIdToGet!:number;
   public email!:string;
   public password!:string;
-  constructor(private _service: TestServiceService, private activatedRouter:ActivatedRoute, private router: Router,private toast:NgToastModule, private confirm:NgConfirmService) { }
+  constructor(private _service: TestServiceService, private activatedRouter:ActivatedRoute, private router: Router,private toast:NgToastService, private confirm:NgConfirmService) { }
   //user:any;
   displayedColumns: string[] = ['no', 'id', 'name', 'email', 'contact', 'gender', 'role', 'password', 'actions'];
   dataSource:any=[];
@@ -35,20 +35,12 @@ export class EmployeeProfileComponent implements OnInit{
   // };
 
   ngOnInit(){
-    //const role = this.router.snapshot.paramMap.get('role');
     this.getMethod();  
     this.activatedRouter.params.subscribe(val=>{
-     // this.userIdToGet=val['id'];
-      this._service.loginUser(this.email, this.password).subscribe(res=>{
-        
-      })
-    })
-    //this.editUser(id:number);   
-    // this.deleteUser(userId:string);
-    // this._service.getUser().subscribe((users) => {
-    //   this.user = users.filter((user: { role: any; }) => user.role === role);
-    // });
+
+    })   
   }
+
   getMethod(){
     this._service.getUser().subscribe((data) => {
     this.dataSource=data;
@@ -59,25 +51,43 @@ export class EmployeeProfileComponent implements OnInit{
 
   editUser(id:number){
    this.router.navigate(['update', id]);
-    // this._service.updateUser(this.).subscribe(res=>{
-    //   console.log(this.dataSource);
-    // })
   }
 
   deleteUser(id:number){
-    this.confirm.showConfirm("Are you sure want to delete?",
-    ()=>{
-      this._service.removeUser(id).subscribe(res=>{
-        //this.toast.success({detail: 'SUCCESS', summary: 'Deleted Successfully', duration 3000})
-       // this.getUsers();
-      })
-    },
-    ()=>{
+    this._service.removeUser(id).subscribe(res=>{
+     alert( 'User deleted successfully');
+         this.getMethod();
+     });
+    // this.confirm.showConfirm("Are you sure want to delete?",
+    // ()=>{
+    //   this._service.removeUser(id).subscribe(()=>{
+    //     this.toast.success({detail:'SUCCESS', summary: 'Deleted Successfully'})
+    //       this.getMethod();
+    //   })
+    // },
+    // ()=>{
 
-    })
-    this._service.removeUser(id).subscribe(()=>{
-    console.log('User deleted successfully');
-    this.getMethod();
-  })
+    // })
 }
 }
+
+
+
+
+
+
+// ngOnInit(){
+//   //const role = this.router.snapshot.paramMap.get('role');
+//   this.getMethod();  
+//   this.activatedRouter.params.subscribe(val=>{
+//    // this.userIdToGet=val['id'];
+//     this._service.loginUser(this.email, this.password).subscribe(res=>{
+      
+//     })
+//   })
+//   //this.editUser(id:number);   
+//   // this.deleteUser(userId:string);
+//   // this._service.getUser().subscribe((users) => {
+//   //   this.user = users.filter((user: { role: any; }) => user.role === role);
+//   // });
+// }

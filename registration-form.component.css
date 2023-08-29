@@ -56,6 +56,12 @@ button:disabled{
   margin-right: 162px;
 }
 
+.updatebtn{
+  margin-top: 20px;
+  float: right;
+  margin-right: 162px;
+}
+
 .cont{
   margin-left: 4.8%;
   width: 65%;

@@ -1,6 +1,9 @@
 
+<div>
+  <a mat-button class="back" routerLink="/"><mat-icon>arrow_back</mat-icon>Back</a>
 
     <header class="header">
+      <a routerLink="/profile"><mat-icon class="icon">account_circle</mat-icon></a>
       <h1>User Details</h1>
     </header>
     <div class="container">
@@ -55,7 +58,7 @@
         <th mat-header-cell *matHeaderCellDef> Actions </th>
         <td mat-cell *matCellDef="let element"> 
           <button (click)="editUser(element.id)" class="edit"><mat-icon>edit</mat-icon></button>
-          <button (click)="deleteUser(element.id)"><mat-icon>delete</mat-icon></button>
+          <button (click)="deleteUser(element.id)" class="delete"><mat-icon>delete</mat-icon></button>
       </td>
       </ng-container>
     
@@ -63,6 +66,7 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
     </div>
+  </div>
        
     
 

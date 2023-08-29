@@ -1,24 +1,26 @@
+<div>
+  <a mat-button class="back" routerLink="/"><mat-icon>arrow_back</mat-icon>Back</a>
 <div class="container">
     <mat-card class="profile-card">
       <mat-card-title class="title">Visitor Profile</mat-card-title>
       <mat-card-content>
         <!-- <form (ngSubmit)="onSubmit()" [formGroup]="visitorForm"></form> -->
-          <!-- <div *ngIf="user && user.userType === 'visitor'"> -->
-          <div *ngIf="user"> 
-            <p><strong>Id :</strong> {{ user.id }}</p> 
-            <p><strong>Name :</strong> {{ user.name }}</p>
-            <p><strong>Email :</strong> {{ user.email }}</p>
-            <p><strong>Contact :</strong> {{ user.contact }}</p>
-            <p><strong>Gender :</strong> {{ user.gender }}</p>
-            <p><strong>Role :</strong> {{ user.role }}</p>
-            <p><strong>Password :</strong> {{ user.password }}</p>
+          <div *ngIf="visitorData">
+        
+            <!-- <p><strong>Id :</strong> {{ getUser.id }}</p>  -->
+            <p><strong>Name :</strong> {{ visitorData.name }}</p>
+            <p><strong>Email :</strong> {{ visitorData.email }}</p>
+            <p><strong>Contact :</strong> {{ visitorData.contact }}</p>
+            <p><strong>Gender :</strong> {{ visitorData.gender }}</p>
+            <p><strong>Role :</strong> {{ visitorData.role }}</p>
+            <p><strong>Password :</strong> {{ visitorData.password }}</p>
           </div>
         </mat-card-content>
       </mat-card>
     </div>
-
-
-
+  </div>
+    
+   
 
 
 

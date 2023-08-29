@@ -12,31 +12,96 @@
       <input type="email" name="email" id="email" formControlName="email"  required style="margin-left: 9px">
     </div>
     
-    
     <div >
       <label>Password:</label>
       <input type="password" name="password" id="password" formControlName="password"  required style="margin-left: 3%">
     </div>
     <br>
-    
-    
-  
-      <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid" class="loginbtn">Login</button>
-  
+         <button mat-raised-button color="primary" type="submit" class="loginbtn">Login</button>
+          
+        
   </form>
   <p *ngIf="loginError" class="error-message">Invalid Email or Password</p>
 </mat-card-content>
   </mat-card>
   </div> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <!-- <app-visitor-profile *ngIf="loggedInRole === 'Visitor'" [visitorData]="visitorData"></app-visitor-profile>
+    <app-creator-profile *ngIf="loggedInRole === 'Creator'" [creatorData]="creatorData"></app-creator-profile>
+    <app-profile *ngIf="loggedInRole === 'Employee'" [employeeData]="employeeData"></app-profile> -->
+  
+  <!-- <app-visitor-profile [getUser]="getUser" ></app-visitor-profile> 
+  <app-profile [getUser]="getUser" ></app-profile> 
+  <app-creator-profile [getUser]="getUser" ></app-creator-profile>  -->
+
+   <!-- <a [routerLink]="['/login/cprofile']" [queryParams]="{ role: creator }">
+          <app-creator-profile [getUser]="getUser" ></app-creator-profile></a>
+          <a [routerLink]="['/login/vprofile']" [queryParams]="{ role: visitor }">
+            <app-visitor-profile [getUser]="getUser" ></app-visitor-profile></a>
+            <a [routerLink]="['/login/profile']" [queryParams]="{ role: employee }">
+              <app-profile [getUser]="getUser" ></app-profile></a> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <!-- <app-creator-profile></app-creator-profile> -->
+ <!--<app-visitor-profile></app-visitor-profile>
+  <app-profile></app-profile> -->
+  
+  <!-- <a [routerLink]="['/login', {outlets: {'cProfile': ['cprofile']}}]"></a>
+ <a [routerLink]="['/login', {outlets: {'vProfile': ['vprofile']}}]"></a>
+
+ <router-outlet name="cProfile"></router-outlet>
+ <router-outlet name="vProfile"></router-outlet> -->
     
    
   
+ <!-- for disabling<button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid" class="loginbtn">Login</button> -->
   
   
   
   
   
   
+
+
+
+
+
+
+
+
+
   <!-- <mat-card-content class="card-content">
   <div class="form">
     <form (ngSubmit)="login()" #loginForm="ngForm" >

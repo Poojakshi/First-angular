@@ -1,41 +1,43 @@
-
+<div>
+  <a mat-button class="back" routerLink="/"><mat-icon>arrow_back</mat-icon>Back</a>
 <div class="profile-box">
     <h2>Creator Profile</h2>
+    <!-- <div *ngIf="creatorData"> -->
     <div class="user-details">
-      <div class="detail-box">
+      <!-- <div class="detail-box">
         <div class="detail-label">Id:</div>
-        <div class="detail-value">{{ user.id }}</div>
-      </div>
+        <div class="detail-value">{{ getUser.id }}</div>
+      </div> -->
       <div class="detail-box">
         <div class="detail-label">Name:</div>
-        <div class="detail-value">{{ user.name }}</div>
+        <div class="detail-value">{{ creatorData.name }}</div>
       </div>
       <div class="detail-box">
         <div class="detail-label">Email:</div>
-        <div class="detail-value">{{ user.email }}</div>
+        <div class="detail-value">{{ creatorData.email }}</div>
       </div>
       <div class="detail-box">
         <div class="detail-label">Contact:</div>
-        <div class="detail-value">{{ user.contact }}</div>
+        <div class="detail-value">{{ creatorData.contact }}</div>
       </div>
       <div class="detail-box">
         <div class="detail-label">Gender:</div>
-        <div class="detail-value">{{ user.gender }}</div>
+        <div class="detail-value">{{ creatorData.gender }}</div>
       </div>
       <div class="detail-box">
         <div class="detail-label">Role:</div>
-        <div class="detail-value">{{ user.role }}</div>
+        <div class="detail-value">{{ creatorData.role }}</div>
       </div>
       <div class="detail-box">
         <div class="detail-label">Password:</div>
-        <div class="detail-value">{{ user.password }}</div>
+        <div class="detail-value">{{ creatorData.password }}</div>
       </div>
-      <!-- <div>
-      <button class="savebtn">Save</button>
-      <button class="editbtn">Edit</button>
-      </div> -->
     </div>
   </div>
+</div>
+   
+
+  
 
 
 

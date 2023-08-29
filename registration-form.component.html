@@ -55,8 +55,8 @@
 
 
   <div>
-    <button *ngIf="!isUpdateActive" (click)="submit()"mat-raised-button color="primary" type="submit" class="registerbtn">Register</button>
-    <button *ngIf="isUpdateActive" (click)="update()" mat-raised-button color="primary" type="update" class="registerbtn">Update</button>
+    <button *ngIf="!isUpdateActive" (click)="submit()"mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid" class="registerbtn">Register</button>
+    <button *ngIf="isUpdateActive" (click)="update()" mat-raised-button color="primary" type="update" class="updatebtn">Update</button>
     
   </div>
 

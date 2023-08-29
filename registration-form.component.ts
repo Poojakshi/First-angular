@@ -16,15 +16,24 @@ interface Role {
 
 })
 export class RegistrationFormComponent{
-  registerForm!: FormGroup;
+   registerForm!: FormGroup;
   public userIdToUpdate!:number;
   public isUpdateActive:boolean=false;
-  roleControl: FormControl = new FormControl();
-  roles: string[] = ['Employee', 'Creator', 'Visitor'];
+   roleControl: FormControl = new FormControl();
+   roles: string[] = ['Employee', 'Creator', 'Visitor'];
  // User:any;
   constructor(private formBuilder: FormBuilder,
     private _service: TestServiceService, private router:Router, private activatedRouter:ActivatedRoute) { }
 
+    user: any= {
+      id:'',
+      name: '',
+      email: '',
+      contact: '',
+      gender: '',
+      role: '',
+      password:''
+    };
     
 
   ngOnInit() {
@@ -37,13 +46,15 @@ export class RegistrationFormComponent{
       password: ['', [Validators.required, Validators.minLength(6)]],
       isactive:this.formBuilder.control(false)
     });
-    this.activatedRouter.params.subscribe(val=>{
-      this.userIdToUpdate=val['id'];
-      this._service.getUserId(this.userIdToUpdate).subscribe(res=>{
-        this.isUpdateActive=true;
-      this.fillFormToUpdate(res);
+    
+     this.activatedRouter.params.subscribe(val=>{
+     this.userIdToUpdate=val['id'];
+     this._service.getUserId(this.userIdToUpdate).subscribe(res=>{
+     this.isUpdateActive=true;
+     this.fillFormToUpdate(res);
       })
     })
+  
   }
   
   submit() {
@@ -52,28 +63,27 @@ export class RegistrationFormComponent{
         console.log(this.registerForm.value);
         alert('User registered successfully!');
       }))
-
     }else{
       alert('Please fill the details');
     }
-    // console.log(this.registerForm.value);
-    //  this._service.createUser(this.registerForm.value).subscribe(result => {
-    //     alert('User registered successfully!');
-    //   });
-      
-    }
-    update(){
-      if(this.registerForm.valid){
-      this._service.updateUser(this.registerForm.value, this.userIdToUpdate).subscribe((res=>{
-       console.log(this.registerForm.value);
-        alert('User updated successfully!');
-        this.router.navigate(['/eprofile']);
-      }))
+   }
+
+   update() {
+    if (this.registerForm.valid) {
+      console.log(this.userIdToUpdate)
+      this._service.editUser(this.registerForm.value, this.userIdToUpdate).subscribe(updatedUser => {
+        if (updatedUser) {
+          alert("User updated successfully:");
+          //this.registerForm.reset();
+          this.router.navigate(['/eprofile']);
+        } else {
+          alert("User update failed or returned null response.");
+        }
+      });
     }
   }
-    
 
-    fillFormToUpdate(user:any){
+   fillFormToUpdate(user:any){
       this.registerForm.patchValue({
         name:user.name,
         email:user.email,
@@ -109,12 +119,47 @@ export class RegistrationFormComponent{
     
     
     
+  //   update(){
+  //     if(this.registerForm.valid){
+  //       this._service.editUser(this.registerForm.value).subscribe(res =>{
+  //         if(res){
+  //         console.log(this.registerForm.value);
+  //         this.registerForm.reset();
+  //         console.log('User updated successfully!');
+  //     }else{
+  //       console.log('User updated failed');
+  //     }
+  //   })
+  //   }
+  //     // this._service.editUser(this.registerForm.value).subscribe(userData => {
+  //     //   if (userData) {
+  //     //     console.log(this.registerForm.value);
+  //     //   //   this.registerForm.reset();
+  //     //     console.log("User updated successfully");
+  //     //     this.router.navigate(['/eprofile']);
+  //     //   } else {
+  //     //     console.log("User update failed.");
+  //     //    }
+  //     // });
+  //     //if(this.registerForm.valid){
+  //     // this._service.editUser(this.registerForm.value).subscribe((userData=>{
+  //     //   if(userData){
+  //     //   console.log(this.registerForm.value);
+  //     // // console.log(this.registerForm.value);
+  //     //  this.registerForm.reset();
+  //     //   console.log("User updated successfully")
+  //     //   this.router.navigate(['/eprofile']);
+  //     //    }else{
+  //     //      console.log("User update failed.");
+  //     //  }
+  //     // }))
+  //   //}
+  // }  
     
     
     
     
-    
-    
+  //this._service.updateUser( this.userIdToUpdate).subscribe((res=>{
     
     
     

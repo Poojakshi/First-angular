@@ -49,6 +49,11 @@ background-color:rgba(205, 227, 240, 0.596);
    right: 14px;
 }
 
+.back{
+   margin-top: 2%;
+   margin-left:-4%;
+ }
+
 /* .pimg{
 display: flex;
 justify-content: center;

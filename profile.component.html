@@ -1,35 +1,40 @@
- <div class="profile-box">
+<div>
+<a mat-button class="back" routerLink="/eprofile"><mat-icon>arrow_back</mat-icon>Back</a>
+<div class="profile-box">
+  <!-- <a mat-button routerLink="/employee">Back</a> -->
     <h2>Employee Profile </h2>
     <table class="user-table">
       
-      <tr>
+      <!-- <tr>
         <td class="field-cell">Id :</td>
-        <td class="data-cell">{{ user.id }}</td>
-      </tr>
+        <td class="data-cell">{{ getUser.id }}</td>
+      </tr> -->
+      <!-- <div  *ngIf="employeeData"> -->
       <tr>
         <td class="field-cell">Name :</td>
-        <td class="data-cell">{{ user.name }}</td>
+        <td class="data-cell">{{ employeeData.name }}</td>
       </tr>
       <tr>
         <td class="field-cell">Email :</td>
-        <td class="data-cell">{{ user.email }}</td>
+        <td class="data-cell">{{ employeeData.email }}</td>
       </tr>
       <tr>
         <td class="field-cell">Contact :</td>
-        <td class="data-cell">{{ user.contact }}</td>
+        <td class="data-cell">{{ employeeData.contact }}</td>
       </tr>
       <tr>
         <td class="field-cell">Gender :</td>
-        <td class="data-cell">{{ user.gender }}</td>
+        <td class="data-cell">{{ employeeData.gender }}</td>
       </tr>
       <tr>
         <td class="field-cell">Role :</td>
-        <td class="data-cell">{{ user.role }}</td>
+        <td class="data-cell">{{ employeeData.role }}</td>
       </tr>
       <tr>
         <td class="field-cell">Password :</td>
-        <td class="data-cell">{{ user.password }}</td>
+        <td class="data-cell">{{ employeeData.password }}</td>
       </tr>
+    <!-- </div> -->
     </table>
      <br>
     <!-- <div>
@@ -37,8 +42,9 @@
       <button class="editbtn">Edit</button>
       </div> -->
     </div> 
-
-
+  </div>
+    
+    
 
 
 

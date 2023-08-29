@@ -8,10 +8,17 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit { // Implement OnInit interface
+export class LoginComponent implements OnInit {
+ 
   loginForm!: FormGroup;
   //isError: boolean = false;
- // invalidLoginMessage: string | null = null;
+  // roles: string[] = ['Employee', 'Creator', 'Visitor'];
+
+  loggedInRole: string = '';
+  visitorData: any;
+  creatorData: any;
+  employeeData: any;
+  
   loginError: boolean = false;
 
   constructor(
@@ -20,31 +27,35 @@ export class LoginComponent implements OnInit { // Implement OnInit interface
     private router: Router
   ) {}
 
-  getUser: any;
-
+  userData: any;
+ //getUser:any;
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
-    //this.visitorMethod();
-    //this.creatorMethod();
   }
 
   onSubmit() {
+    
     if (this.loginForm.valid) {
       this._service.loginUser(this.loginForm.value.email, this.loginForm.value.password).subscribe({
               next: res => {
-          this.getUser = res;
-          console.log(this.getUser);
-
-          if (this.getUser.role === 'Creator') {
-            this.router.navigate(['/creator']);
-          } else if (this.getUser.role === 'Employee') {
-            this.router.navigate(['/eprofile']);
-          } else if (this.getUser.role === 'Visitor') {
-            this.router.navigate(['/vprofile']);
+                this._service.setUserData(res);
+                this.userData=res;
+                console.log(this.userData)
+                this.loginError = false;
+                this.loggedInRole = this.userData.role;
+         
+         // console.log(this.loggedInRole)
+          if (this.loggedInRole === 'Visitor') {
+            this.visitorData = this.userData;
+          } else if (this.loggedInRole === 'Creator') {
+            this.creatorData = this.userData;
+          } else if (this.loggedInRole === 'Employee') {
+            this.employeeData = this.userData;
           }
+          this.navigateToProfile();
         },
       error: (error) => {
         this.loginError = true;
@@ -52,10 +63,27 @@ export class LoginComponent implements OnInit { // Implement OnInit interface
         });
     }
   }
-  // visitorMethod(){
-  //  this.router.navigate(['vprofile'])
-  // }
+  navigateToProfile() {
+    //const loggedInRole = this._service.getUserData()?.role;
+    //console.log(this.loggedInRole)
+    if (this.loggedInRole === 'Creator') {
+      //console.log(this.loggedInRole)
+      this.router.navigate(['/cprofile']);
+        } else if (this.loggedInRole === 'Employee') {
+      this.router.navigate(['/eprofile']);
+        } else if (this.loggedInRole === 'Visitor'){
+          console.log(this.loggedInRole)
+          this.router.navigate(['/vprofile']);
+        }
+  }
+  
 }
+
+
+
+
+
+
 
 
 
@@ -83,6 +111,7 @@ export class LoginComponent implements OnInit { // Implement OnInit interface
 //   }
 // }
 // }
+
 
 
 

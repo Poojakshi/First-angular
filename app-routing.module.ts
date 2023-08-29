@@ -20,17 +20,18 @@ const routes: Routes=[
  {path:'home', component:HomeComponent},
  {path:'register',component:RegistrationFormComponent},
  {path:'login', component:LoginComponent},
- {path:'creator', component:CreatorComponent},
+ {path:'cprofile', component:CreatorProfileComponent},
+ {path:'profile', component:ProfileComponent},  
  {path:'employee',component:EmployeeComponent},
  {path:'vprofile', component:VisitorProfileComponent},
- {path:'eprofile/:role', component:EmployeeProfileComponent},
+ {path:'eprofile', component:EmployeeProfileComponent},
  {path:'content', component:ContentComponent},
+ {path:'creator', component:CreatorComponent},
  // {path:'food', component:FoodComponent},
- {path:'profile', component:ProfileComponent},
- {path:'cprofile', component:CreatorProfileComponent},
  {path:'update/:id',component:RegistrationFormComponent}
  
 ];
+
 
 @NgModule({
   imports:[RouterModule.forRoot(routes)], 

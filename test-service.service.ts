@@ -6,7 +6,8 @@ import { Observable} from 'rxjs';
   providedIn:'root'
 })
 export class TestServiceService {
-findUser:any;
+//findUser:any;
+private userData: any;
    constructor(private http:HttpClient) { }
 
 createUser(userData:any):Observable<any>{
@@ -14,26 +15,35 @@ createUser(userData:any):Observable<any>{
 
   }
 
-loginUser(email:string, password:string):Observable<any>{
+loginUser(email:any, password:any):Observable<any>{
    return this.http.get<any>(`http://localhost:8086/getUserByEmail?email=${email}&password=${password}`);
   
   }
 
-getUserId(id:number):Observable<any>{
-    return this.http.get(`http://localhost:8086/getUserByID/${id}`)
+getUserId(userId:number):Observable<any>{
+    return this.http.get(`http://localhost:8086/getUserByID/${userId}`)
 }
 
 getUser():Observable<any>{
     return this.http.get('http://localhost:8086/getUser');
   }
  
-updateUser(value:any, registerObj:any):Observable<any>{
-    return this.http.put('http://localhost:8086/updateUser', value, registerObj);
+editUser(userData:any, id:number):Observable<any>{
+    return this.http.put(`http://localhost:8086/updateUser/${id}`, userData);
   }
 
 removeUser(id:number):Observable<any>{
-    return this.http.delete(`http://localhost:8086/deleteUser?${id}`);
+    return this.http.delete(`http://localhost:8086/deleteUser/${id}`);
   }
+
+  setUserData(user: any) {
+    this.userData = user;
+  }
+
+  getUserData() {
+    return this.userData;
+  }
+
 }
 
 
